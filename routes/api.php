@@ -17,3 +17,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::controller(ProductController::class)->group(function()
+{
+    Route::get('/', 'index');
+    Route::get('addProduct', 'create');
+    Route::post('addProduct', 'store');
+    Route::get('descriptionProduct/{id}', 'show');
+    Route::get('editProduct/{id}', 'edit');
+    Route::put('editProduct/{id}', 'update');
+    Route::get('deleteProduct/{id}', 'destroy');
+});
+
+Route::controller(ShoppingController::class)->group(function()
+{
+    Route::get('shoppingCar', 'index')->name('shoppingCar');
+    Route::put('shoppingCar', 'store')->name('shoppingCar');
+});
+
+Route::controller(RegisterController::class)->group(function()
+{
+    Route::get('register', 'create')->name('register');
+    Route::post('register', 'store')->name('register');
+});

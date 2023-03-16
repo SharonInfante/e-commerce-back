@@ -10,12 +10,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('/', compact('products'));
-    }
-
-    public function create()
-    {
-        return view('addProduct');
+        return response()->json($products);
     }
 
     public function store(Request $request)
@@ -30,6 +25,42 @@ class ProductController extends Controller
 
         $products->save();
 
-        return redirect()->route('home', $products);
+        return response()->json($products);
+    }
+
+    public function show($id)
+    {
+        $products = Product::find($id);
+        return response()->json($products);
+    }
+
+    public function edit($id)
+    {
+        $products = Product::find($id);
+        return response()->json($products); 
+    }
+
+    public function update(Request $request, $id)
+    {
+        $products = Product::findOrFail($id);
+
+        $products->product_name = $request->product_name;
+        $products->code = $request->code;
+        $products->price = $request->price;
+        $products->description = $request->description;
+        $products->image = $request->image;
+
+        $products->save();
+
+        return response()->json($products);
+    }
+
+    public function destroy(Request $request, $id){
+
+        $products = Product::findOrFail($id);
+        $products->id = $request->id;
+        $products->delete();
+
+        return response()->json($products);
     }
 }

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{route('addProduct.store')}}" method="POST">
+    <form action="{{route('editProduct', $products->id)}}" method="POST">
 
         @csrf
 

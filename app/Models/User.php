@@ -42,8 +42,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsTo(Rol::class);
+    }
+
 }

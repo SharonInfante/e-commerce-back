@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('code');
             $table->double('price', 8, 2);
             $table->longText('description');
-            $table->binary('image');
+            $table->string('image');
             $table->timestamps();
         });
     }

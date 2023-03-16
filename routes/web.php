@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShoppingController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(ProductController::class)->group(function()
-{
-    Route::get('/', 'index')->name('/');
-    Route::get('addProduct', 'create')->name('addProduct');
-    Route::post('addProduct', 'store')->name('addProduct.store');
-});
