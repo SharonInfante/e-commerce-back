@@ -9,25 +9,19 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SesionController extends Controller
 {
-    // public function store(SesionRequest $request)
-    // {
-    //     if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
-    //         return response()->json(['message' => 'Invalid credentials']);
-    //     }
-
-    //     return back()->withErrors([
-    //         'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.'
-    //     ]);
-    // }
+    public function index()
+    {
+        return view('sesion');
+    }
 
     public function store(SesionRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) { 
-            return response()->json(['message' => 'Bienvenido'], Response::HTTP_OK);
+            return response()->json(['message' => 'Welcome'], Response::HTTP_OK);
         } else {
-        return response(["message" =>"Credenciales inválidas"], Response::HTTP_UNAUTHORIZED);
+        return response(["message" =>"invalid credentials"], Response::HTTP_UNAUTHORIZED);
     }}
     
 

@@ -46,7 +46,8 @@ Route::controller(RegisterController::class)->group(function()
 
 Route::controller(SesionController::class)->group(function()
 {
-    Route::post('sesion', 'store');
+    route::get('sesion', 'index')->name('sesion');
+    Route::post('sesion', 'store')->name('sesion');
     Route::get('logout', 'logout');
 });
 
