@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShoppingController;
-use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\SesionController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +13,7 @@ use App\Http\Controllers\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+
 

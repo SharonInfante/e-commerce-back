@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SesionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(ProductController::class)->group(function()
 {
     Route::get('/', 'index');
-    Route::get('addProduct', 'create');
     Route::post('addProduct', 'store');
     Route::get('descriptionProduct/{id}', 'show');
     Route::get('editProduct/{id}', 'edit');
@@ -40,3 +43,10 @@ Route::controller(RegisterController::class)->group(function()
     Route::get('register', 'create')->name('register');
     Route::post('register', 'store')->name('register');
 });
+
+Route::controller(SesionController::class)->group(function()
+{
+    Route::post('sesion', 'store');
+    Route::get('logout', 'logout');
+});
+

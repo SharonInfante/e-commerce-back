@@ -3,38 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SesionRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 class SesionController extends Controller
 {
-    public function showLogin()
+    // public function store(SesionRequest $request)
+    // {
+    //     if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+    //         return response()->json(['message' => 'Invalid credentials']);
+    //     }
+
+    //     return back()->withErrors([
+    //         'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.'
+    //     ]);
+    // }
+
+    public function store(SesionRequest $request)
     {
-        if (Auth::check()){
-            return redirect()->route('home');
-        }
-        return view('login');
-    }
+        $credentials = $request->only('email', 'password');
 
-    public function login(SesionRequest $request)
+        if (Auth::attempt($credentials)) { 
+            return response()->json(['message' => 'Bienvenido'], Response::HTTP_OK);
+        } else {
+        return response(["message" =>"Credenciales inválidas"], Response::HTTP_UNAUTHORIZED);
+    }}
+    
+
+    public function logout()
     {
-        $credentials = $request->getCredentials();
-
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-        if (!$user) {
-            dd('Error: credenciales incorrectas');
-            return redirect()->to('login')->withErrors('auth.failed');
-        }
-
-        Auth::login($user);
-
-        return $this->authenticated($request, $user);             
-    }
-
-    public function authenticated(Request $request, $user)
-    {
-        dd('User authenticated:', $user);
-        return redirect()->route('/');
+        Auth::logout();
+        return response()->json(['message' => 'closed session']);
     }
 }
