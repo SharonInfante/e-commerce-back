@@ -29,7 +29,7 @@ Route::controller(ProductController::class)->group(function()
     Route::get('descriptionProduct/{id}', 'show');
     Route::get('editProduct/{id}', 'edit');
     Route::put('editProduct/{id}', 'update');
-    Route::get('deleteProduct/{id}', 'destroy');
+    Route::delete('deleteProduct/{id}', 'destroy');
 });
 
 Route::controller(ShoppingController::class)->group(function()
