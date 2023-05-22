@@ -14,9 +14,9 @@ Emprendimiento “Mi Campo”, dedicados a la venta de alimentos en tienda físi
 [![codecov](https://codecov.io/gh/sebastianbergmann/phpunit/branch/main/graph/badge.svg)](https://github.com/Natalia-irlo/popders_music.git)
 
 ## Tech/framework used :computer:
-* **Laravel** - utilizado para el backend de la web
+* **Laravel** - utilizado para la logíca de negocio de la página web
 
-## Tecnología :equipo:
+## Tecnología 🔌
 * Composer [Sitio web oficial](https://getcomposer.org/)
 
 ## Instalación :mechanic:
